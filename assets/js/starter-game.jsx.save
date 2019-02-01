@@ -1,0 +1,62 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import _ from 'lodash';
+
+export default function game_init(root) {
+  ReactDOM.render(<Starter />, root);
+}
+
+class Starter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { msg: "" };
+    
+  }
+
+  hax(_ev) {
+    alert("hax!");
+  }
+
+  make_button(num) {
+    return <div id={num} className="column" onClick={this.flip.bind(this)}>
+           <p>number {num}</p>
+           </div>;
+  }
+
+  flip(_ev) {
+    console.log("T");
+    this.setState(_.assign({}, this.state, {msg: _ev.target.child.value}));
+  }
+
+  render() {
+
+    return <div>
+      <p>Pressed: {this.state.msg}</p>
+      <div className="row">
+        {this.make_button(1)}
+        {this.make_button(2)}
+        {this.make_button(3)}
+        {this.make_button(4)}
+      </div>
+      <div className="row">
+        {this.make_button(5)}
+        {this.make_button(6)}
+        {this.make_button(7)}
+        {this.make_button(8)}
+      </div>
+      <div className="row">
+        {this.make_button(9)}
+        {this.make_button(10)}
+        {this.make_button(11)}
+        {this.make_button(12)}
+      </div>
+      <div className="row">
+        {this.make_button(13)}
+        {this.make_button(14)}
+        {this.make_button(15)}
+        {this.make_button(16)}
+      </div>
+    </div>;
+  }
+}
+
